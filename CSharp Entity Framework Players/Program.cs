@@ -4,6 +4,7 @@ using CSharp_Entity_Framework_Players;
 Console.WriteLine("Hello, World!");
 
 //Milestone 1:
+/*
 using(CalcioContext db= new CalcioContext())
 {
     Random Casuale = new Random();
@@ -19,5 +20,5 @@ using(CalcioContext db= new CalcioContext())
     giocatore.Surname = "pinco";
 
 
-
-}
+    //cancellazione del giocatore??
+}*/
