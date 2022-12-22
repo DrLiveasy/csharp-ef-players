@@ -12,7 +12,7 @@ namespace CSharp_Entity_Framework_Players
         public DbSet<Player> players { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=localhost;Database=CalcioDB;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Data Source=localhost;Database=CalcioDB;Integrated Security=True;TrustServerCertificate=True");
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CSharp_Entity_Framework_Players
 {
-    [Table("Players")]
+    [Table("players")]
     public class Player
     {
         #region Proprietà
