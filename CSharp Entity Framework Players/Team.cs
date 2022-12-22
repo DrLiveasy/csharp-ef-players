@@ -28,7 +28,7 @@ namespace CSharp_Entity_Framework_Players
         public string Trainer { get; set; }
 
         
-        List<Player> Players { get; set; }
+        public List<Player> Players { get; set; }
 
 
         #endregion
