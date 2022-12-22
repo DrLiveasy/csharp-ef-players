@@ -36,9 +36,10 @@ namespace CSharp_Entity_Framework_Players
         [Column("partite_vinte")]
         public int partiteVinte { get; set; }
 
-
-        public int Team_id { get; set; }
+        public int TeamId { get; set; }
         public Team Team { get; set; }
+
+
 
 
         #endregion

@@ -3,6 +3,7 @@ using CSharp_Entity_Framework_Players;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSharpEntityFrameworkPlayers.Migrations
 {
     [DbContext(typeof(CalcioContext))]
-    partial class CalcioContextModelSnapshot : ModelSnapshot
+    [Migration("20221222152621_altreModific.")]
+    partial class altreModific
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -72,7 +75,7 @@ namespace CSharpEntityFrameworkPlayers.Migrations
                     b.Property<string>("City")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
-                        .HasColumnName("citta");
+                        .HasColumnName("cognome");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -92,12 +95,17 @@ namespace CSharpEntityFrameworkPlayers.Migrations
             modelBuilder.Entity("CSharp_Entity_Framework_Players.Player", b =>
                 {
                     b.HasOne("CSharp_Entity_Framework_Players.Team", "Team")
-                        .WithMany()
+                        .WithMany("Players")
                         .HasForeignKey("TeamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Team");
+                });
+
+            modelBuilder.Entity("CSharp_Entity_Framework_Players.Team", b =>
+                {
+                    b.Navigation("Players");
                 });
 #pragma warning restore 612, 618
         }

@@ -3,6 +3,7 @@ using CSharp_Entity_Framework_Players;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSharpEntityFrameworkPlayers.Migrations
 {
     [DbContext(typeof(CalcioContext))]
-    partial class CalcioContextModelSnapshot : ModelSnapshot
+    [Migration("20221222145308_nuovaTabella")]
+    partial class nuovaTabella
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,7 +46,10 @@ namespace CSharpEntityFrameworkPlayers.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("cognome");
 
-                    b.Property<int>("TeamId")
+                    b.Property<int>("Team_id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Team_id1")
                         .HasColumnType("int");
 
                     b.Property<int>("partiteGiocate")
@@ -56,23 +62,23 @@ namespace CSharpEntityFrameworkPlayers.Migrations
 
                     b.HasKey("PlayerId");
 
-                    b.HasIndex("TeamId");
+                    b.HasIndex("Team_id1");
 
                     b.ToTable("players");
                 });
 
             modelBuilder.Entity("CSharp_Entity_Framework_Players.Team", b =>
                 {
-                    b.Property<int>("TeamId")
+                    b.Property<int>("Team_id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TeamId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Team_id"));
 
                     b.Property<string>("City")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
-                        .HasColumnName("citta");
+                        .HasColumnName("cognome");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -84,7 +90,7 @@ namespace CSharpEntityFrameworkPlayers.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("allenatore");
 
-                    b.HasKey("TeamId");
+                    b.HasKey("Team_id");
 
                     b.ToTable("teams");
                 });
@@ -92,12 +98,17 @@ namespace CSharpEntityFrameworkPlayers.Migrations
             modelBuilder.Entity("CSharp_Entity_Framework_Players.Player", b =>
                 {
                     b.HasOne("CSharp_Entity_Framework_Players.Team", "Team")
-                        .WithMany()
-                        .HasForeignKey("TeamId")
+                        .WithMany("Players")
+                        .HasForeignKey("Team_id1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Team");
+                });
+
+            modelBuilder.Entity("CSharp_Entity_Framework_Players.Team", b =>
+                {
+                    b.Navigation("Players");
                 });
 #pragma warning restore 612, 618
         }

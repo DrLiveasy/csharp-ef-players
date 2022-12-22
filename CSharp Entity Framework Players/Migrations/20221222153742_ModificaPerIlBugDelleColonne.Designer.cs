@@ -3,6 +3,7 @@ using CSharp_Entity_Framework_Players;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSharpEntityFrameworkPlayers.Migrations
 {
     [DbContext(typeof(CalcioContext))]
-    partial class CalcioContextModelSnapshot : ModelSnapshot
+    [Migration("20221222153742_ModificaPerIlBugDelleColonne")]
+    partial class ModificaPerIlBugDelleColonne
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -72,7 +75,7 @@ namespace CSharpEntityFrameworkPlayers.Migrations
                     b.Property<string>("City")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
-                        .HasColumnName("citta");
+                        .HasColumnName("cognome");
 
                     b.Property<string>("Name")
                         .IsRequired()

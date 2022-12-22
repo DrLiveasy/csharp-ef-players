@@ -13,15 +13,22 @@ namespace CSharp_Entity_Framework_Players
     {
         #region Proprietà
         [Key]
-        public int Team_id { get; set; }
+        public int TeamId { get; set; }
 
+        [Required]
+        [Column("nome")]
         public string Name { get; set; }
 
+        [Required]
+        [Column("citta")]
         public string City { get; set; }
 
+        [Required]
+        [Column("allenatore")]
         public string Trainer { get; set; }
 
-        public List<Player> Players { get; set;}
+        
+        List<Player> Players { get; set; }
 
 
         #endregion
