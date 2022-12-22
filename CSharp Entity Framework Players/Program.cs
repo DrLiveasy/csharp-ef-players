@@ -15,4 +15,9 @@ using(CalcioContext db= new CalcioContext())
 
     Console.WriteLine(giocatore.ToString());
 
+    giocatore.Name = "marco";
+    giocatore.Surname = "pinco";
+
+
+
 }
