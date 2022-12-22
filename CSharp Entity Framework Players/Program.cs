@@ -13,5 +13,6 @@ using(CalcioContext db= new CalcioContext())
 
     Player giocatore = new Player() { Name = "pinco", Surname = "pallo", Punteggio = PunteggioGen, partiteGiocate = PartiteGiocateGen, partiteVinte = partiteVinteGen};
 
+    Console.WriteLine(giocatore.ToString());
 
 }

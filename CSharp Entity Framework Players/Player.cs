@@ -38,6 +38,20 @@ namespace CSharp_Entity_Framework_Players
 
         #endregion
 
+        #region Metodi
+
+        public override string ToString()
+        {
+            return @$"---Dati Giocatore---
+Nome: {this.Name}
+Cognome: {this.Surname}
+Punteggio: {this.Punteggio}
+Partite Giocate: {this.partiteGiocate}
+Partite Vinte: {this.partiteVinte}";
+        }
+
+        #endregion
+
 
     }
 }
